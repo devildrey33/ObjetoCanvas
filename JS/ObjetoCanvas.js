@@ -181,11 +181,7 @@ ObjetoCanvas.prototype.IniciarObjetoCanvas = function() {
     // Si el canvas es de ancho fijo, añado el css para centrar-lo
     if (this.OpcionesCanvas.Ancho !== "Auto") { this.Canvas.style.width = this.Ancho + "px"; this.Canvas.style.left = "calc(50% - (" + this.Ancho + "px / 2))"; }
     if (this.OpcionesCanvas.Alto !== "Auto")  { this.Canvas.style.height = this.Alto + "px"; this.Canvas.style.top = "calc(50% - (" + this.Ancho + "px / 2))";  }
-    
-    if (this.OpcionesCanvas.ForzarLandscape === true) {
-        this.Cabecera.setAttribute("forzarlandscape", true);
-    }
-    
+       
     // Creación del contexto
     try {
         if (this.OpcionesCanvas.Tipo.toLowerCase() === '2d') {
@@ -427,20 +423,27 @@ ObjetoCanvas.prototype.EventoRedimensionar = function() {
 //    console.log("esmovil" + ObjetoNavegador.EsMovil());
     // portrait
     if (this.OpcionesCanvas.ForzarLandscape === true && ObjetoNavegador.EsMovil() === true && window.innerWidth < window.innerHeight) {
+        this.Cabecera.setAttribute("forzarlandscape", true);
         // Invierto el nuevo ancho y la nueva altura (si no son fijas) para forzar el modo landscape
-        if (this.OpcionesCanvas.Ancho === "Auto") { this.Ancho  = window.screen.availHeight;  }
-        if (this.OpcionesCanvas.Alto === "Auto")  { this.Alto   = window.screen.availWidth; }        
-        this.Cabecera.style.left = -(this.Ancho - this.Alto) / 2 + "px";
-        this.Cabecera.style.top = (this.Ancho - this.Alto) / 2 + "px";
-        this.Cabecera.style.width = this.Ancho + "px";
-        this.Cabecera.style.height = this.Alto + "px";
+        if (this.OpcionesCanvas.Ancho === "Auto") { this.Ancho  = window.innerHeight;  }
+        if (this.OpcionesCanvas.Alto === "Auto")  { this.Alto   = window.innerWidth; }        
+//      this.Cabecera.style.left = -(this.Ancho - this.Alto) / 2 + "px";
+//        this.Cabecera.style.top = (this.Ancho - this.Alto) / 2 + "px";
+        this.Cabecera.setAttribute("style", "width:" + this.Ancho + "px;" +
+                                            "height:" + this.Alto + "px;" + 
+                                            "position:fixed; top:0px; left:0px;");
+/*        this.Cabecera.style.width = this.Ancho + "px";
+        this.Cabecera.style.height = this.Alto + "px";*/
     }
+    // landscape
     else {
-        if (this.OpcionesCanvas['Entorno'] === 'normal') {
+        this.Cabecera.removeAttribute("forzarlandscape");
+        this.Cabecera.removeAttribute("style");
+        if (this.OpcionesCanvas['Entorno'] === 'Normal') {
             this.Cabecera.style.width  = "100%";
             this.Cabecera.style.height = "100%";
-            this.Cabecera.style.left = "0px";
-            this.Cabecera.style.top  = "0px";
+            this.Cabecera.style.left = "0";
+            this.Cabecera.style.top  = "0";
         }
         // Calculo el nuevo ancho y la nueva altura (si no son fijas)
         if (this.OpcionesCanvas.Ancho === "Auto") { this.Ancho  = this.Cabecera.offsetWidth;  }
