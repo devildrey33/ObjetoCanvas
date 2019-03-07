@@ -11,11 +11,9 @@
     <head>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <!-- Estilos CSS para el test -->
-        <link rel='stylesheet' href='/Ejemplos/Utils/ObjetoCanvas.css' />        
-        <!-- Si deseas utilizar JQuery descomenta la siguiente línea -->
-<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+        <link rel='stylesheet' href='https://devildrey33.github.io/ObjetoCanvas/CSS/ObjetoCanvas.css' />        
         <!-- ObjetoCanvas similar al ObjetoBanner para testear Banners -->
-        <script src="/Ejemplos/Utils/ObjetoCanvas.js"></script>
+        <script src="https://devildrey33.github.io/ObjetoCanvas/JS/ObjetoCanvas.js"></script>
         <!-- Código javascript --> 
 <script type="text/javascript">
 /* Plantilla para crear banners animados en devildrey33.es */
@@ -29,16 +27,16 @@ var NUEVOCANVAS2D = function() {
         'Alto'                      : 'Auto',
         'Entorno'                   : 'Normal',
         'MostrarFPS'                : true,
-        'BotonLogo'                 : false,
-        'BotonPantallaCompleta'     : true,
-        'Pausar'                    : true,             // Pausa el canvas si la pestaña no tiene el foco del teclado
-        'ElementoRaiz'              : document.body,
-        'CapturaEjemplo'            : ""                // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
+        'BotonesPosicion'           : "derecha",         // Puede ser 'derecha' o 'izquierda'
+        'BotonPantallaCompleta'     : true,        
+        'BotonLogo'                 : true,
+        'BotonExtraHTML'            : "",                // Contenido extra para los botones del lateral inferior izquierdo (solo se usa en el ejemplo sinusoidal y cyberparasit)
+        'ElementoRaiz'              : "",                // ID de la etiqueta que se usara como raíz para todo el HTML del objeto canvas. Si no se especifica ninguna, se usara el body.
+        'Pausar'                    : true,              // Pausa el canvas si la pestaña no tiene el foco del teclado
+        'ColorFondo'                : 0xFFFFFF,
+        'CapturaEjemplo'            : "",                // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
+        'ForzarLandscape'           : true               // Fuerza al dispositivo movil para que se muestre solo apaisado
     }) === false) { return false; }
-    // Se ha creado el canvas, inicio los valores de la animación ... 
-
-    // Esconde la ventana que informa al usuario de que se está cargando la animación. (REQUERIDO)
-    this.Cargando(false);
 };
 
 NUEVOCANVAS2D.prototype = Object.assign( Object.create(ObjetoCanvas.prototype), {
@@ -65,6 +63,12 @@ NUEVOCANVAS2D.prototype = Object.assign( Object.create(ObjetoCanvas.prototype), 
     TouchStart      : function(Evento) { },
     // Función que se llama al soltar el dedo de la pantalla
     TouchEnd        : function(Evento) { },    
+    // Función de inicio
+    Iniciar         : function() {
+        // Esconde la ventana que informa al usuario de que se está cargando la animación. (REQUERIDO)
+        this.Cargando(false);
+
+    },
     // Función que se llama al pausar el banner
     Pausa           : function() { },
     // Función que se llama al reanudar el banner
