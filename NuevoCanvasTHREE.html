@@ -12,13 +12,13 @@
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
         <title>Experimento Three.js</title>
         <!-- Estilos CSS para el ObjetoCanvas -->
-        <link rel='stylesheet' href='./CSS/ObjetoCanvas.css' />        
+        <link rel='stylesheet' href='https://devildrey33.github.io/ObjetoCanvas/CSS/ObjetoCanvas.css' />        
         
         <!-- Three.JS (de momento como no encuentro un CDN actualizado usare el que tengo... que no se ni que versión es xd entre la 0.84 y la 1.0 aprox) -->
-        <script src="./JS/three.min.js"></script>
+        <script src="https://devildrey33.github.io/ObjetoCanvas/JS/three.min.js"></script>
 
         <!-- ObjetoCanvas similar al ObjetoBanner para testear Banners -->
-        <script src="./JS/ObjetoCanvas.js"></script>
+        <script src="https://devildrey33.github.io/ObjetoCanvas/JS/ObjetoCanvas.js"></script>
                         
         <!-- Código javascript --> 
 <script type="text/javascript">
@@ -150,8 +150,8 @@ NUEVOCANVASTHREE.prototype = Object.assign( Object.create(ObjetoCanvas.prototype
 });
 
 // Inicialización del canvas en el Load de la página
-var Canvas = null;
-window.addEventListener('load', function() { Canvas = new NUEVOCANVASTHREE; });
+var Canvas = NUEVOCANVASTHREE;
+
 </script>
     </head>
     <body>
