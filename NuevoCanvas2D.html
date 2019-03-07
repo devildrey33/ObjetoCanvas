@@ -1,0 +1,82 @@
+<!-- 
+    Plantilla para test de canvas creado por Josep Antoni Bover Comas el 05-07-2016
+
+        Vista por defecto en el Laboratorio de pruebas  
+		devildrey33_Lab->Opciones->Vista = Filas;
+
+        Ultima modificación el 05/02/2017
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+        <!-- Estilos CSS para el test -->
+        <link rel='stylesheet' href='/Ejemplos/Utils/ObjetoCanvas.css' />        
+        <!-- Si deseas utilizar JQuery descomenta la siguiente línea -->
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+        <!-- ObjetoCanvas similar al ObjetoBanner para testear Banners -->
+        <script src="/Ejemplos/Utils/ObjetoCanvas.js"></script>
+        <!-- Código javascript --> 
+<script type="text/javascript">
+/* Plantilla para crear banners animados en devildrey33.es */
+
+// Constructor 
+var NUEVOCANVAS2D = function() {
+    // Llamo al constructor del ObjetoBanner
+    if (ObjetoCanvas.call(this, { 
+        'Tipo'                      : '2d',
+        'Ancho'                     : 'Auto',
+        'Alto'                      : 'Auto',
+        'Entorno'                   : 'Normal',
+        'MostrarFPS'                : true,
+        'BotonLogo'                 : false,
+        'BotonPantallaCompleta'     : true,
+        'Pausar'                    : true,             // Pausa el canvas si la pestaña no tiene el foco del teclado
+        'ElementoRaiz'              : document.body,
+        'CapturaEjemplo'            : ""                // Captura de pantalla para el ejemplo a "NuevoCanvas2D.png" se le añadirá "https://devildrey33.es/Web/Graficos/250x200_"
+    }) === false) { return false; }
+    // Se ha creado el canvas, inicio los valores de la animación ... 
+
+    // Esconde la ventana que informa al usuario de que se está cargando la animación. (REQUERIDO)
+    this.Cargando(false);
+};
+
+NUEVOCANVAS2D.prototype = Object.assign( Object.create(ObjetoCanvas.prototype), {
+    constructor     : NUEVOCANVAS2D, 
+    // Función que se llama al redimensionar el documento
+    Redimensionar   : function() {    },
+    // Función que se llama al hacer scroll en el documento    
+    Scroll          : function() {    },
+    // Función que se llama al mover el mouse por el canvas
+    MouseMove       : function(Evento) { },
+    // Función que se llama al presionar un botón del mouse por el canvas
+    MousePresionado : function(Evento) { },
+    // Función que se llama al soltar un botón del mouse por el canvas
+    MouseSoltado    : function(Evento) { },
+    // Función que se llama al entrar con el mouse en el canvas
+    MouseEnter      : function(Evento) { },
+    // Función que se llama al salir con el mouse del canvas
+    MouseLeave      : function(Evento) { },
+    // Función que se llama al presionar una tecla
+    TeclaPresionada : function(Evento) { },
+    // Función que se llama al soltar una tecla
+    TeclaSoltada    : function(Evento) { },
+    // Función que se llama al presionar la pantalla
+    TouchStart      : function(Evento) { },
+    // Función que se llama al soltar el dedo de la pantalla
+    TouchEnd        : function(Evento) { },    
+    // Función que se llama al pausar el banner
+    Pausa           : function() { },
+    // Función que se llama al reanudar el banner
+    Reanudar        : function() { },
+    // Función que pinta cada frame de la animación
+    Pintar          : function() {    }
+});
+
+var Canvas = null;
+window.addEventListener('load', function() { Canvas = new NUEVOCANVAS2D; });
+</script>
+    </head>
+    <body>
+    </body>
+</html>
