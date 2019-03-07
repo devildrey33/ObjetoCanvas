@@ -303,7 +303,14 @@ body {
 /* Forzar landscape */
 @media only screen and (orientation:portrait){
     #ObjetoCanvas[forzarlandscape="true"] {
-        transform: rotatez(90deg); /*translateX(25%) translateY(25%);*/
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        /*transform: rotatez(90deg); /*translateX(25%) translateY(25%);*/
     }
 }
 @media only screen and (orientation:landscape){

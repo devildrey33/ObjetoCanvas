@@ -230,7 +230,7 @@ ObjetoCanvas.prototype.MostrarErrorIniciarWebGL = function(error) {
     // Muestro la ventana con el error y una captura del ejemplo
     var VentanaError = document.getElementById("Cabecera_Error");
     VentanaError.setAttribute("visible", "true");
-    var Captura = (this.OpcionesCanvas["CapturaEjemplo"] === "") ? "" : "<br />" + "<img src='https://cdn.rawgit.com/devildrey33/devildrey33/2ff5c5dc/Web/Graficos/250x200_" + this.OpcionesCanvas["CapturaEjemplo"] + "'>";
+    var Captura = (this.OpcionesCanvas["CapturaEjemplo"] === "") ? "" : "<br />" + "<img src='https://devildrey33.github.io/Graficos/250x200_" + this.OpcionesCanvas["CapturaEjemplo"] + "'>";
     VentanaError.innerHTML = "<span>" + this.Textos[this.OpcionesCanvas.Idioma][7] + " : " + error + "</span>" + Captura;
     this.Cargando(false);
 };
@@ -429,9 +429,9 @@ ObjetoCanvas.prototype.EventoRedimensionar = function() {
         if (this.OpcionesCanvas.Alto === "Auto")  { this.Alto   = window.innerWidth; }        
 //      this.Cabecera.style.left = -(this.Ancho - this.Alto) / 2 + "px";
 //        this.Cabecera.style.top = (this.Ancho - this.Alto) / 2 + "px";
-        this.Cabecera.setAttribute("style", "width:" + this.Ancho + "px;" +
+/*        this.Cabecera.setAttribute("style", "width:" + this.Ancho + "px;" +
                                             "height:" + this.Alto + "px;" + 
-                                            "position:fixed; top:0px; left:0px;");
+                                            "position:fixed; top:0px; left:0px;");*/
 /*        this.Cabecera.style.width = this.Ancho + "px";
         this.Cabecera.style.height = this.Alto + "px";*/
     }
