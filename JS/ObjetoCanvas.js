@@ -120,7 +120,7 @@ ObjetoCanvas.prototype.IniciarObjetoCanvas = function() {
         }
         // Boton con el logo
         if (this.OpcionesCanvas.BotonLogo === true) {
-            StrHtml +=  "<a href='https://devildrey33.github.io' class='ObjetoCanvas_Boton' target='_blank' title='"+ this.Textos[this.OpcionesCanvas.Idioma][6] +"' id='ObjetoCavas_Logo'>" +
+            StrHtml +=  "<a href='https://devildrey33.es' class='ObjetoCanvas_Boton' target='_blank' title='"+ this.Textos[this.OpcionesCanvas.Idioma][6] +"' id='ObjetoCavas_Logo'>" +
                     "<img src='https://cdn.rawgit.com/devildrey33/devildrey33/ddb01d71/Web/SVG/Iconos50x50.svg#svg-logo' />" +
                     "<div id='ObjetoCavas_TextoLogo'>" +
                         "<span>D</span>" + "<span>E</span>" + "<span>V</span>" + "<span>I</span>" + "<span>L</span>" + "<span>D</span>" + "<span>R</span>" + "<span>E</span>" + "<span>Y</span>" + "<span>&nbsp;</span>" + "<span>3</span>" + "<span>3</span>" +
