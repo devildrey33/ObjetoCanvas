@@ -31,6 +31,7 @@
     Opciones['BotonPantallaCompleta']   puede ser : true o false.                                       (TRUE POR DEFECTO)
     Opciones['BotonLogo']               puede ser : true o false.                                       (TRUE POR DEFECTO)
     Opciones['ElementoRaiz']            elemento del HTML donde se creará el canvas                     (POR DEFECTO es 'document.body')
+    Opciones['Pausar']                  si es true, pausará la animación si la web pierde el foco.      (TRUE POR DEFECTO)
     Opciones['ColorFondo']              color del fondo en HEX (SOLO para THREE.js)                     (POR DEFECTO es '0x312E35' gris oscuro) 
     Opciones['CapturaEjemplo']          nombre del archivo que contiene la captura de pantalla          (Enlazará a '/Web/Graficos/250x200_')
     Opciones['ForzarLandscape']         fuerza al dispositivo movil para mostrarse apaisado (NO FUNCIONA BIEN!!!!)
@@ -76,8 +77,9 @@ var ObjetoCanvas = function(Opciones) {
 
 ObjetoCanvas.prototype.IniciarObjetoCanvas = function() {
     // Asigno el objeto que será la raíz donde se crearán las etiquetas del canvas
-    if (this.OpcionesCanvas['ElementoRaiz'] === "") this.OpcionesCanvas['ElementoRaiz'] = document.body;
-    else                                            this.OpcionesCanvas['ElementoRaiz'] = document.getElementById(this.OpcionesCanvas['ElementoRaiz']);
+    if (this.OpcionesCanvas['ElementoRaiz'] === "")                { this.OpcionesCanvas['ElementoRaiz'] = document.body; }
+    else if (this.OpcionesCanvas['ElementoRaiz'] == document.body) { }
+    else                                                           { this.OpcionesCanvas['ElementoRaiz'] = document.getElementById(this.OpcionesCanvas['ElementoRaiz']); }
     // En el entorno Normal hay que crear todas las etiquetas
     if (this.OpcionesCanvas['Entorno'] === 'Normal') {
         // Creo la cabecera vacia si no existe
